@@ -2,6 +2,7 @@
 
 import random
 
+
 def generate_map(number_of_players, seed=0):
     """This function returns a tuple of tuples that represents the arrangement of the sectors
 
@@ -17,12 +18,12 @@ def generate_map(number_of_players, seed=0):
         left(300 deg))
     """
 
-    #give the seed parameter to the random module if one is provided and an empty sectors list is created
+    # give the seed parameter to the random module if one is provided and an empty sectors list is created
     if seed is not 0:
         random.seed(seed)
     randomized_sectors = list()
 
-    #fill the sectors list with either 6 ot 10 sectors, depending on the number of players argument
+    # fill the sectors list with either 6 or 10 sectors, depending on the number of players argument
     if number_of_players == 3 or number_of_players == 4:
         randomized_sectors = [[1, -1], [2, -1], [3, -1], [4, -1], [5, -1], [6, -1], [7, -1], [8, -1], [9, -1], [10, -1]]
     elif number_of_players == 1 or number_of_players == 2:
@@ -30,13 +31,13 @@ def generate_map(number_of_players, seed=0):
     else:
         raise ValueError
 
-    #sectors locations and rotation positions are randomized
+    # sectors locations and rotation positions are randomized
     random.shuffle(randomized_sectors)
     for sector in randomized_sectors:
         sector[1] = random.choice(range(6))
         sector = tuple(sector)
 
-    #return the randomized sectors list as arrangmentgenerator tuple
+    # return the randomized sectors list as a tuple
     return tuple(randomized_sectors)
 
 
@@ -54,7 +55,6 @@ def generate_round_scoring_tiles(seed=0):
         all_tiles_list.pop(chosen_tile_index)
 
     return tuple(randomized_tiles)
-
 
 
 def generate_final_scoring_tiles(seed=0):
@@ -92,7 +92,8 @@ def generate_round_boosters(number_of_players, seed=0):
 def generate_standard_tech_tiles(seed=0):
     """This function returns a tuple of 9 standard tiles
 
-    The first 6 of the sequence are going under the 6 research tracks from left to right ([0] - Terrafotming, [2] - Artificial intelligence, etc.)
+    The first 6 of the sequence are going under the 6 research tracks from left to right
+        ([0] - Terrafotming, [2] - Artificial intelligence, etc.)
     The last 3 are going in the three trackless slots
     """
 
@@ -112,7 +113,8 @@ def generate_standard_tech_tiles(seed=0):
 def generate_advanced_tech_tiles(seed=0):
     """This function returns a tuple of 6 advanced tech tiles
 
-    The first 6 of the sequence are going under the 6 research tracks from left to right ([0] - Terrafotming, [2] - Artificial intelligence, etc.)
+    The first 6 of the sequence are going under the 6 research tracks from left to right
+        ([0] - Terrafotming, [2] - Artificial intelligence, etc.)
     The last 3 are going in the three trackless slots
     """
 
@@ -130,12 +132,12 @@ def generate_advanced_tech_tiles(seed=0):
 
 
 def generate_setup(number_of_players, seed=0):
-    setup_tuple = list()
-    setup_tuple.append(generate_map(number_of_players, seed))
-    setup_tuple.append(generate_round_scoring_tiles(seed))
-    setup_tuple.append(generate_final_scoring_tiles(seed))
-    setup_tuple.append(generate_round_boosters(number_of_players, seed))
-    setup_tuple.append(generate_standard_tech_tiles(seed))
-    setup_tuple.append(generate_advanced_tech_tiles(seed))
+    setup_list = list()
+    setup_list.append(generate_map(number_of_players, seed))
+    setup_list.append(generate_round_scoring_tiles(seed))
+    setup_list.append(generate_final_scoring_tiles(seed))
+    setup_list.append(generate_round_boosters(number_of_players, seed))
+    setup_list.append(generate_standard_tech_tiles(seed))
+    setup_list.append(generate_advanced_tech_tiles(seed))
 
-    return setup_tuple
+    return tuple(setup_list)
