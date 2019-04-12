@@ -9,9 +9,9 @@ def generate_map(number_of_players, seed=0):
     ((s,r), (s, r)...)
     The tuple is either 10 or 6(the quantity of sectors in total) sub tuples long
     The index of the sub tuple represents sectors location in the layout as shown below
-       0   1   2
-     3   4   5   6
-       7   8   9
+       9   0   4
+     8   1   2   5
+       7   3   6
 
     s - the number of the sector
     r - the rotation position of the sector(0 - pointing up(0 deg), 1 - pointing upper right(60 deg), 5 - pointing upper
