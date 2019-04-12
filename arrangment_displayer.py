@@ -9,7 +9,7 @@ SECTORS_COORDINATES = ((362, 26), (227, 210), (453, 236), (317, 420), (590, 52),
 
 
 def display_map_section(sectors_sequence):
-    map_section = pygame.Surface((920, 710))
+    map_section = pygame.Surface((920, 710), pygame.SRCALPHA, 32)
     sectors_surfaces = list()
 
     print("{}{}.png".format(SECTORS_PATH, 0+1))
@@ -20,6 +20,8 @@ def display_map_section(sectors_sequence):
         sectors_surfaces[i] = pygame.transform.scale(sectors_surfaces[i], SECTORS_SIZE)
 
     for i in range(10):
-        map_section.blit(sectors_surfaces[sectors_sequence[i][0]-1], SECTORS_COORDINATES[i])
+        sector = sectors_surfaces[sectors_sequence[i][0]-1]
+        sector = pygame.transform.rotate(sector, sectors_sequence[i][1]*60)
+        map_section.blit(sector, SECTORS_COORDINATES[i])
 
     return map_section
