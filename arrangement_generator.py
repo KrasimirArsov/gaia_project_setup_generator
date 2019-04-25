@@ -3,7 +3,7 @@
 import random
 
 
-def generate_map(number_of_players, seed=0):
+def generate_map(number_of_players=4, seed=0):
     """This function returns a tuple of tuples that represents the arrangement of the sectors
 
     ((s,r), (s, r)...)
@@ -73,7 +73,7 @@ def generate_final_scoring_tiles(seed=0):
     return tuple(randomized_tiles)
 
 
-def generate_round_boosters(number_of_players, seed=0):
+def generate_round_boosters(number_of_players=4, seed=0):
     """This function returns a tuple of number of players + 3 round booster tiles"""
 
     if seed is not 0:
@@ -131,13 +131,15 @@ def generate_advanced_tech_tiles(seed=0):
     return tuple(randomized_tiles)
 
 
-def generate_setup(number_of_players, seed=0):
-    setup_list = list()
-    setup_list.append(generate_map(number_of_players, seed))
-    setup_list.append(generate_round_scoring_tiles(seed))
-    setup_list.append(generate_final_scoring_tiles(seed))
-    setup_list.append(generate_round_boosters(number_of_players, seed))
-    setup_list.append(generate_standard_tech_tiles(seed))
-    setup_list.append(generate_advanced_tech_tiles(seed))
+def generate_races(seed=0):
 
-    return tuple(setup_list)
+    if seed is not 0:
+        random.seed(seed)
+    all_races = ((1, 2), (3, 4), (5, 6), (7, 8), (9, 10), (11, 12), (13, 14))
+    randomized_races = list()
+
+    for i in range(7):
+        randomized_races.append(all_races[i][random.randint(0,1)])
+
+    return tuple(randomized_races)
+
