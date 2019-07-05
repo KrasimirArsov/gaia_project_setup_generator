@@ -1,0 +1,1 @@
+INFO 2019-05-20 12:46:38,088 - Our first message!

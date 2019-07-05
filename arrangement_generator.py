@@ -2,8 +2,13 @@
 
 import random
 
+setted_seed=0
 
-def generate_map(number_of_players=4, seed=0):
+def set_seed(seed):
+    setted_seed = seed
+
+
+def generate_map(number_of_players=4, seed=setted_seed):
     """This function returns a tuple of tuples that represents the arrangement of the sectors
 
     ((s,r), (s, r)...)
@@ -37,11 +42,11 @@ def generate_map(number_of_players=4, seed=0):
         sector[1] = random.choice(range(6))
         sector = tuple(sector)
 
-    # return the randomized sectors list as a tuple
+    # return a tuple of the randomized sectors list
     return tuple(randomized_sectors)
 
 
-def generate_round_scoring_tiles(seed=0):
+def generate_round_scoring_tiles(seed=setted_seed):
     """This function returns a tuple of 6 round scoring tiles"""
 
     if seed is not 0:
@@ -57,7 +62,7 @@ def generate_round_scoring_tiles(seed=0):
     return tuple(randomized_tiles)
 
 
-def generate_final_scoring_tiles(seed=0):
+def generate_final_scoring_tiles(seed=setted_seed):
     """This function returns a tuple 2 final scoring tiles"""
 
     if seed is not 0:
@@ -73,7 +78,7 @@ def generate_final_scoring_tiles(seed=0):
     return tuple(randomized_tiles)
 
 
-def generate_round_boosters(number_of_players=4, seed=0):
+def generate_round_boosters(number_of_players=4, seed=setted_seed):
     """This function returns a tuple of number of players + 3 round booster tiles"""
 
     if seed is not 0:
@@ -89,7 +94,7 @@ def generate_round_boosters(number_of_players=4, seed=0):
     return tuple(randomized_tiles)
 
 
-def generate_standard_tech_tiles(seed=0):
+def generate_standard_tech_tiles(seed=setted_seed):
     """This function returns a tuple of 9 standard tiles
 
     The first 6 of the sequence are going under the 6 research tracks from left to right
@@ -110,7 +115,7 @@ def generate_standard_tech_tiles(seed=0):
     return tuple(randomized_tiles)
 
 
-def generate_advanced_tech_tiles(seed=0):
+def generate_advanced_tech_tiles(seed=setted_seed):
     """This function returns a tuple of 6 advanced tech tiles
 
     The first 6 of the sequence are going under the 6 research tracks from left to right
@@ -131,7 +136,7 @@ def generate_advanced_tech_tiles(seed=0):
     return tuple(randomized_tiles)
 
 
-def generate_races(seed=0):
+def generate_races(seed=setted_seed):
 
     if seed is not 0:
         random.seed(seed)
