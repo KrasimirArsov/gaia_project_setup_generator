@@ -23,5 +23,7 @@ do_exit = False
 while not do_exit:
     events = pygame.event.get()
     for event in events:
+        if event.type == pygame.QUIT:
+                pygame.quit()
         if event.type == pygame.KEYDOWN:
             do_exit = True
